@@ -1,0 +1,56 @@
+---
+import { actions } from "astro:actions";
+---
+
+<section class="w-full max-w-xl mx-auto">
+  <form 
+    method="post" 
+    id="newsletter-form" 
+    action={actions.newsletter} 
+    class="flex flex-col gap-4"
+  >
+    <div class="flex flex-col sm:flex-row !gap-3">
+      <input 
+        name="email" 
+        class="flex-1 !px-4 !py-2 rounded-lg bg-black/50 border border-brand backdrop-blur-lg text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-300/50 focus:border-transparent transition-all" 
+        type="email" required placeholder="Ingresa tu Email" 
+      />
+      <button
+        type="submit"
+        class="!px-6 py-3 bg-brand hover:bg-yellow-400 text-black font-bold rounded-lg transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+      >
+        ¡Avísame!
+      </button>
+    </div>
+    <div id="newsletter-messsage" class="hidden text-sm text-center text-brand">
+      ¡Ya eres parte de la newsletter!
+    </div>
+  </form>
+</section>
+
+<script>
+  import { throwConfetti } from "@/utils/confetti";
+  import { actions } from "astro:actions";
+
+  const form = document.getElementById("newsletter-form") as HTMLFormElement
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault()
+
+    const formData = new FormData(form)
+    const email = formData.get("email") as string
+
+    const { data, error } = await actions.newsletter({ email })
+    
+    if (error) {
+      console.log(error);
+      
+    }
+
+    if (data) {
+      console.log(data);
+      throwConfetti()
+    }
+
+  })
+</script>
