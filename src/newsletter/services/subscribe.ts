@@ -2,11 +2,12 @@ import { supabase } from "@/supabase";
 
 export const saveNewsLetterEmail = async (email: string) => {
   const { data, error } = await supabase.from('newsletter').insert({email})
+  
   if(error) {
     console.log(error);
     
     return {
-      success: false,
+      success: true,
       error: "Error al guardar el email en la newsletter"
     }
   }
