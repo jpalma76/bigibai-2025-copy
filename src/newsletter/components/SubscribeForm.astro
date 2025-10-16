@@ -43,8 +43,7 @@ import { actions } from "astro:actions";
     const { data, error } = await actions.newsletter({ email })
     
     if (error) {
-      console.log(error);
-      
+      console.error(error);
     }
 
     if (data) {
