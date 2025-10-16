@@ -1,22 +1,60 @@
+---
+import "@/styles/global.css";
+
+import GradientOverlay from "@/components/GradientOverlay.astro";
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="description" content="Participa en el calendario de adviento de Big Ibai y gana chocolates y premios increíbles cada día."/>
+		
+		<link rel="icon" type="image/png" sizes="16x16" href="/cropped-favicon-16x16.png"/>
+		<link rel="icon" type="image/png" sizes="32x32" href="/cropped-favicon-32x32.png"/>
+		<link rel="icon" type="image/png" sizes="192x192" href="/cropped-favicon-192x192.png"/>
+		<link rel="apple-touch-icon" href="/cropped-favicon-180x180.png" />
+		<meta name="msapplication-TileImage" content="/cropped-favicon-270x270.png"/>
+
+		<title>Big Ibai: Calendario de Adviento con chocolates y premios</title>
+		
+		<meta name="keywords" content="bigibai" />
+		<meta name="author" content="Ibai Llanos" />
+
+		<meta name="descriptions" content="Algo grande se acerca" />
+		<meta name="keywords" content="bigibai" />
+		<meta name="author" content="Ibai Llanos" />
+		<meta name="robots" content="index, follow" />
+		<meta name="googlebot" content="index, follow" />
+		<meta name="yandexbot" content="index, follow" />
+		
+		<meta property="og:title" content="Big Ibai: Calendario de Adviento con chocolates y premios"/>
+		<meta property="og:description" content="Participa en el calendario de adviento de Big Ibai y gana chocolates y premios increíbles cada día."/>
+		<meta property="og:image" content="https://www.bigibai.com/og.jpg" />
+		
+		<meta name="twitter:card" content="summary_large_image"/>
+		<meta name="twitter:creator" content="@IbaiLlanos" />
+		<meta name="twitter:title" content="Big Ibai: Calendario de Adviento con chocolates y premios"/>
+		<meta name="twitter:description" content="Participa en el calendario de adviento de Big Ibai y gana chocolates y premios increíbles cada día."/>
+		<meta name="twitter:image" content="https://www.bigibai.com/og.jpg"/>
+	  <meta name="twitter:image:alt" content="Big Ibai: Calendario de Adviento con chocolates y premios"/>
+		<meta name="theme-color" content="#4c2d7e" />
+		
+		<link rel="preload" href="/fonts/century.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+		<link rel="preload" href="/fonts/century-bold.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+		<link rel="preload" href="/fonts/heavy.woff2" as="font" type="font/woff2" crossorigin="anonymous"/>
+		
+		
+		<link rel="stylesheet" href="/_astro/aviso-legal.CpEznE1J.css" />
+
 	</head>
 	<body>
-		<slot />
+		<div id="background-mask" class="min-h-screen w-full">
+			<GradientOverlay />
+			<div class="relative z-2">
+				<slot />
+			</div>
+		</div>
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
