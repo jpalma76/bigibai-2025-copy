@@ -12,8 +12,8 @@ import { actions } from "astro:actions";
     <div class="flex flex-col sm:flex-row !gap-3">
       <input 
         name="email" 
-        class="flex-1 !px-4 !py-2 rounded-lg bg-black/50 border border-brand backdrop-blur-lg text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-300/50 focus:border-transparent transition-all" 
-        type="email" required placeholder="Ingresa tu Email" 
+        class="flex-1 !px-4 !py-2 rounded-lg bg-black/50 border border-brand backdrop-blur-lg text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-yellow-300/50 focus:border-transparent transition-all" type="email" required
+         placeholder="Ingresa tu Email" 
       />
       <button
         type="submit"
@@ -22,34 +22,54 @@ import { actions } from "astro:actions";
         ¡Avísame!
       </button>
     </div>
-    <div id="newsletter-messsage" class="hidden text-sm text-center text-brand">
-      ¡Ya eres parte de la newsletter!
+    <div id="newsletter-messsage" class="hidden font-semibold text-sm text-center text-brand">
+      Te has suscrito a la newsletter
     </div>
   </form>
 </section>
 
 <script>
   import { throwConfetti } from "@/utils/confetti";
-  import { actions } from "astro:actions";
+  import { actions, isInputError } from "astro:actions";
+
+  const message = document.getElementById("newsletter-messsage") as HTMLDivElement
 
   const form = document.getElementById("newsletter-form") as HTMLFormElement
-
+ 
   form?.addEventListener("submit", async (event) => {
     event.preventDefault()
-
+    
+    message.classList.remove("text-red-500","text-green-500")
     const formData = new FormData(form)
     const email = formData.get("email") as string
 
     const { data, error } = await actions.newsletter({ email })
-    
+
     if (error) {
-      console.error(error);
+      const messageText = isInputError(error)
+      ? error?.fields?.email?.join(", ")
+      : error.message
+
+      message.textContent = 
+      messageText ??
+      "Error al guardar el email en la newsletter"
+
+      message.classList.remove("hidden")
+      message.classList.remove("text-green-500")
+      message.classList.add("text-red-500")
     }
 
     if (data) {
       console.log(data);
       throwConfetti()
+      message.textContent = "¡Ya eres parte de la newsletter!"
+      message.classList.remove("hidden")
+      message.classList.remove("text-red-500")
+      message.classList.add("text-green-500")
     }
 
+    setTimeout(() => {
+      window.location.reload()
+    }, 5000);
   })
 </script>
