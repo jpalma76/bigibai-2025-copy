@@ -5,7 +5,7 @@ import { z } from 'astro:schema';
 export const server = {
   newsletter: defineAction({
     input: z.object({
-      email: z.string().email()
+      email: z.string().email('El formato del email no es válido!')
     }),
     
     async handler({ email }) {
