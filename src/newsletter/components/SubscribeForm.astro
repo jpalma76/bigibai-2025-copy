@@ -70,7 +70,10 @@ import { actions } from "astro:actions";
     }
 
     setTimeout(() => {
-      window.location.reload()
+      form.reset()
+      message.classList.remove("text-red-500")
+      message.classList.remove("text-green-500")
+      message.classList.add("hidden")
     }, 5000);
   })
 </script>
