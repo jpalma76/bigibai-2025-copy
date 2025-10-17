@@ -7,22 +7,29 @@ export const server = {
     input: z.object({
       email: z.string().email()
     }),
-
+    
     async handler({ email }) {
       console.log(email);
-
-      const { success, error } = await saveNewsLetterEmail(email)
+      
+      const { success, error, duplicated } = await saveNewsLetterEmail(email)
       
       if (!success) {
         throw new ActionError({
           code: 'BAD_REQUEST',
-          message: error ?? "error al guadar wn la newsletter"
+          message: error ?? "error al guadar en la newsletter"
         })
+      }
+
+      if (duplicated) {
+        return {
+          success: true,
+          message: "¡Este usuario ya está en la newsletter!"
+        }
       }
 
       return {
         success: true,
-        message: "Email saved"
+        message: "Te has suscrito a la newsletter"
       }
     }
   })
