@@ -67,7 +67,7 @@
     mask-size: 30px;
 
     &.unlocked {
-      animation: lock-reveal 4s forwards ease-in-out;
+      animation: lock-reveal 3s forwards ease-in-out;
     }
 	}
 
