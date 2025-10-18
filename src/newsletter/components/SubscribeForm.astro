@@ -2,7 +2,7 @@
 import { actions } from "astro:actions";
 ---
 
-<section class="w-full max-w-xl mx-auto">
+<section class="relative w-full max-w-xl mx-auto z-0">
   <form 
     method="post" 
     id="newsletter-form" 
@@ -17,12 +17,12 @@ import { actions } from "astro:actions";
       />
       <button
         type="submit"
-        class="!px-6 py-3 bg-brand hover:bg-yellow-400 text-black font-bold rounded-lg transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+        class="!px-6 pt-2 bg-brand hover:bg-yellow-400 text-black font-bold rounded-lg transition-all hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
       >
         ¡Avísame!
       </button>
     </div>
-    <div id="newsletter-messsage" class="hidden font-semibold text-sm text-center text-brand">
+    <div id="newsletter-messsage" class="hidden font-semibold text-sm text-center text-brand z-10">
       Te has suscrito a la newsletter
     </div>
   </form>
