@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://bigibai.com/sitemap-index.xml
+Sitemap: https://bigibai-2025-copy.vercel.app/sitemap-index.xml
