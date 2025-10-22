@@ -1,22 +1,92 @@
+---
+import GradientOverlay from '@/components/GradientOverlay.astro'
+import '@/styles/global.css' 
+---
+
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<title>BigIbai - Algo grande se acerca!</title>
+		
+		<meta name="description" content="Bigibai - ¡Algo grande se acerca!" />
+		<meta name="keywords" content="bigibai, bigibai-2025" />
+		<meta name="author" content="Ibai Llanos" />
+		<meta name="robots" content="index, follow" />
+		<meta name="googglebot" content="index, follow" />
+		<meta name="bingbot" content="index, follow" />
+		<meta name="yandexbot" content="index, follow" />
+
+		 <!-- Nombre del autor del sitio -->
+    <meta name="author" content="Juan Palma" />
+
+    <!-- Facebook Meta Tags -->
+    <!-- <meta property="og:url" content="https://bigibai-copy.netlify.app/" /> -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Bigibai - Algo grande se acerca!" />
+    <meta property="og:description" content="Proyecto de landing page de la pagina de bigibai copiada de un proyecto de @midudev" />
+    <!-- <meta property="og:image" content="https://bigibai-copy.netlify.app/og.jpg"/> -->
+    <meta property="og:locale" content="es_ES" />
+
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <!-- <meta property="twitter:domain" content="https://bigibai-copy.netlify.app/" /> -->
+    <!-- <meta property="twitter:url" content="https://bigibai-copy.netlify.app/" /> -->
+    <meta name="twitter:title" content="Bigibai - Algo grande se acerca!" />
+    <meta name="twitter:description" content="Copia de landing de bigigai 2025" />
+    <!-- <meta name="twitter:image" content="https://bigibai-copy.netlify.app/og.jpg" /> -->
+    <meta name="twitter:creator" content="@jpalma76" />
+    <meta name="twitter:type" content="website" />
+   <!--  <meta name="twitter:site"content="https://bigibai-copy.netlify.app/" /> -->
+
+		<link rel="icon" type="image/svg+xml" href="/cropped-favicon-16x16.png" />
 	</head>
 	<body>
-		<slot />
+		<div id="background-mask">
+			<GradientOverlay />
+			<div class="relative z-2">
+				<slot />
+			</div>
+		</div>
 	</body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  #background-mask {
+  background-image: url("/fondo.webp");
+  background-position: top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: screen;
+
+  mask-image: url("/lock.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: 30px;
+
+  &.unlocked {
+    animation: lock-reveal 4s forwards ease-in-out;
+  }
+}
+
+@keyframes lock-reveal {
+  0% {
+    mask-size: 30px;
+  }
+  100% {
+    mask-size: 1000vh;
+  }
+}
 </style>
+
+<script>
+	const backgroundMask = document.getElementById("background-mask") as HTMLDivElement
+
+	document.addEventListener("DOMContentLoaded", () => {
+		backgroundMask.classList.add("unlocked")
+	})
+</script>
+
+

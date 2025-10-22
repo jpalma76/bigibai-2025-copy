@@ -1,0 +1,28 @@
+<header class="w-full h-[25vh] md:h-[33vh] flex justify-center items-center">
+    <div class="relative w-[45vw] min-w-[380px] max-w-xl:max-w-3xl h-auto flex justify-center-items-center">
+      <img 
+        class="relative pulse transition-all drop-shadow-sm drop-shadow-yellow-400 w-full h-auto mx-auto z-0"
+        src="/logo-a.svg" 
+        alt="logo bigibai" 
+      />
+    </div>
+</header>
+
+<style>
+  @keyframes pulse {
+    0% {
+      scale: 1.1;
+    }
+
+    50% {
+      scale: 1;
+    }
+    100% {
+      scale: 1.1;
+    }
+  }
+
+  .pulse {
+    animation: pulse 5s infinite;
+  }
+</style>
