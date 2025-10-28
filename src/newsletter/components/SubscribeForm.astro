@@ -38,7 +38,9 @@ import { actions } from "astro:actions";
   const message = document.getElementById("newsletter-message") as HTMLDivElement
 
   message.classList.add("hidden")
-  message.classList.remove("text-red-500", "text-green-500", "text-brand")
+  function removeColorMessages() {
+    message.classList.remove("text-red-500", "text-green-500", "text-brand")
+  }
 
   form?.addEventListener("submit", async (event) => {
     
@@ -81,9 +83,7 @@ import { actions } from "astro:actions";
 
     setTimeout(() => {
         form.reset()
-        message.classList.remove("text-red-500")
-        message.classList.remove("text-green-500")
-        message.classList.remove("text-brand")
+        removeColorMessages()
         message.classList.add("hidden")
         message.textContent = ""
       }, 5000);
