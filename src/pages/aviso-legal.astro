@@ -1,13 +1,20 @@
 ---
+import LayoutLegal from '@/layouts/Layout-legal.astro'
 import Section from '@/components/Section.astro'
-import Layout from '@/layouts/Layout.astro'
 import Footer from '@/sections/Footer.astro'
+
+import BackToHome from '@/components/BackToHome.astro'
+import Legal from '@/content/legal/aviso-legal.md'
 
 ---
 
-<Layout>
+<LayoutLegal>
   <Section>
-
+    <BackToHome />
+    <div class="max-w-[65%] flex flex-col justify-center text-justify !my-5">
+      <Legal />
+    </div>
   </Section>
+
   <Footer />
-</Layout>
+</LayoutLegal>
