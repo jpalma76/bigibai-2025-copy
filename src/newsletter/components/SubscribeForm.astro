@@ -38,7 +38,7 @@ import { actions } from "astro:actions";
   const message = document.getElementById("newsletter-message") as HTMLDivElement
 
   message.classList.add("hidden")
-  message.classList.remove("text-red-500", "text-green-500")
+  message.classList.remove("text-red-500", "text-green-500", "text-brand")
 
   form?.addEventListener("submit", async (event) => {
     
@@ -56,31 +56,34 @@ import { actions } from "astro:actions";
       message.textContent = 
         messageText  ?? ""
 
-      message.classList.remove("hidden")
-      message.classList.add("text-red-500")
       message.classList.remove("text-green-500")
+      message.classList.remove("hidden")
+      message.classList.remove("text-brand")
+      message.classList.add("text-red-500")
     }
-
+    /* si el correo no está registrado se guarda */
     if(data?.success) {
       throwConfetti()
-      message.textContent = data.message
-      message.classList.remove("hidden")
-      message.classList.add("text-green-500")
       message.classList.remove("text-red-500")
+      message.classList.remove("text-brand")
+      message.classList.add("text-green-500")
+      message.classList.remove("hidden")
+      message.textContent = data.message
     }
 
-    if (data) {
-      message.textContent = data.message
-      message.classList.remove("hidden")
-      message.classList.add("text-brand")
+    if (data?.message && !data?.success) {
       message.classList.remove("text-red-500")
       message.classList.remove("text-green-500")
+      message.classList.add("text-brand")
+      message.textContent = data.message
+      message.classList.remove("hidden")
     }
 
     setTimeout(() => {
         form.reset()
         message.classList.remove("text-red-500")
         message.classList.remove("text-green-500")
+        message.classList.remove("text-brand")
         message.classList.add("hidden")
         message.textContent = ""
       }, 5000);
