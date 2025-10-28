@@ -1,5 +1,4 @@
 ---
-import GradientOverlay from '@/components/GradientOverlay.astro'
 import '@/styles/global.css' 
 ---
 
@@ -64,7 +63,6 @@ import '@/styles/global.css'
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: 30px;
-
   &.unlocked {
     animation: lock-reveal 4s forwards ease-in-out;
   }
@@ -87,5 +85,3 @@ import '@/styles/global.css'
 		backgroundMask.classList.add("unlocked")
 	})
 </script>
-
-
