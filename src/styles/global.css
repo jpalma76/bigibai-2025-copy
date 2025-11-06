@@ -1,20 +1,13 @@
+/* Global Styles */
 @import "tailwindcss";
-
 @plugin '@midudev/tailwind-animations';
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+h1, h2 {
+  font-family: "Heavy", sans-serif;
+}
 
-body {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-height: 100vh;
-  background-color: black;
-  color: white;
+h3, h4, h5, h6 {
+  font-family: "Century", sans-serif;
 }
 
 @theme {
@@ -43,12 +36,4 @@ body {
   font-weight: normal;
   font-style: normal;
   font-display: swap;
-}
-
-h1, h2 {
-  font-family: "Heavy", sans-serif;
-}
-
-h3, h4, h5, h6 {
-  font-family: "Century", sans-serif;
 }
