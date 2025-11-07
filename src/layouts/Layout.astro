@@ -42,8 +42,10 @@ import '@/styles/global.css'
 		<link rel="icon" type="image/svg+xml" href="/cropped-favicon-16x16.png" />
 	</head>
 
-	<body id="background-mask">
-    <slot />
+	<body>
+    <div id="background-mask">
+      <slot />
+    </div>
 	</body>
 </html>
 
@@ -56,20 +58,24 @@ import '@/styles/global.css'
     box-sizing: border-box;
   }
 
-  html, body {
+  body {
   display: flex;
   flex-direction: column;
   background-color: black;
   color: white;
+  width: 100% !important;
+  height: screen;
+
+}
+
+#background-mask {
   background-image: url("/fondo.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   width: 100% !important;
   height: screen;
-}
 
-#background-mask {
   mask-image: url("/lock.svg");
   mask-repeat: no-repeat;
   mask-position: center;
