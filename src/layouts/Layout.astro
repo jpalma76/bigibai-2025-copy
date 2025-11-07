@@ -50,15 +50,18 @@ import '@/styles/global.css'
 </html>
 
 <style>
-
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 #background-mask {
   background-image: url("/fondo.webp");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  width: 100% !important;
+  width: 100vw;
   height: screen;
 
   mask-image: url("/lock.svg");
