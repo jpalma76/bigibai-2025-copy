@@ -1,28 +1,65 @@
 /* Global Styles */
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @plugin '@midudev/tailwind-animations';
 
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  body {
+body {
   display: flex;
   flex-direction: column;
   background-color: black;
   color: white;
-  width: 100% !important;
+  width: 100vw;
   height: screen;
 }
 
-h1, h2 {
+/* h1, h2 {
   font-family: "Heavy", sans-serif;
 }
 
 h3, h4, h5, h6 {
   font-family: "Century", sans-serif;
+} */
+
+h1,
+h2,
+.md-container h1,
+.md-container h2 {
+  font-family: 'Heavy', sans-serif;
+  font-weight: 400;
+}
+
+h3,
+h4,
+h5,
+h6,
+.md-container h3,
+.md-container h4,
+.md-container h5,
+.md-container h6 {
+  font-family: 'Century', sans-serif;
+  font-weight: 700;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.md-container {
+  @apply prose prose-invert mx-auto px-4 pt-24 pb-2 md:px-0;
+}
+
+.md-container h1,
+h2 {
+  @apply !text-brand !mt-4 text-center leading-[130%] uppercase;
+}
+
+h2 {
+  @apply text-4xl;
+  margin-bottom: 1.5rem;
 }
 
 @theme {
