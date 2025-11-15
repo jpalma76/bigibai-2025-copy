@@ -10,6 +10,26 @@
 </header>
 
 <style>
+  /* ✅ MOBILE */
+  @media (max-width: 640px) {
+    header {
+      height: 25vh !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    header > div {
+      width: 60vw !important;
+      min-width: 200px !important;
+    }
+
+    header img {
+      width: 100%;
+      max-width: 260px;
+    }
+  }
+
   @keyframes pulse {
     0% {
       scale: 1.1;
